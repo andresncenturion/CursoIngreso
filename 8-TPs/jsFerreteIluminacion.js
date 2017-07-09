@@ -12,55 +12,59 @@ var cantlamp,marca,precio=35,final=0;
 
 function CalcularPrecio () 
 {
-cantlamp=document.getElementById("Cantidad").value;
-switch (cantlamp)
-{
-    case "6":
-    final=precio-precio*0.5;
-    break;
-    case "5":
-    if (marca=="ArgentinaLuz")
-    {
-    final=precio-precio*0.4;
-    }
-    else
-    {
-        final=precio-precio*0.3;
-    }
-    break;
-    case "4":
-    if (marca=="ArgentinaLuz"||marca=="FelipeLamparas")
-    {
-        final=precio-precio*0.25;
-    }
-    else
-    {
-        final=precio-precio*0.2;
-    }
-    break;
-    case "3":
-    if (marca=="ArgentinaLuz")
-    {
-        final=precio-precio*0.15;
-    }
-    else if (marca=="FelipeLamparas")
-    {
-        final=precio-precio*0.1;
-    }
-    else
-    {
-        final=precio-precio*0.05;
-    }
-    break;
+    cantlamp=document.getElementById("Cantidad").value;
+    marca=document.getElementById("Marca").value;
+    precio=precio*cantlamp;
+    if (cantlamp>=3)
+        {
+        switch (cantlamp)
+        {
+            case "6":
+            final=precio-precio*0.5;
+            break;
+            case "5":
+            if (marca=="ArgentinaLuz")
+            {
+                final=precio-precio*0.4;
+            }
+            else
+            {
+                final=precio-precio*0.3;
+            }
+            break;
+            case "4":
+            if (marca=="ArgentinaLuz"||marca=="FelipeLamparas")
+            {
+                final=precio-precio*0.25;
+            }
+            else
+            {
+                final=precio-precio*0.2;
+            }
+            break;
+            case "3":
+            if (marca=="ArgentinaLuz")
+            {
+                final=precio-precio*0.15;
+            }
+            else if (marca=="FelipeLamparas")
+            {
+                final=precio-precio*0.1;
+            }
+            else
+            {
+                final=precio-precio*0.05;
+            }
+            break;
+            default:
+            final=precio-precio*0.5;
+            break;
+        }
+        }    
     if (final>120)
     {
-        final=final*1.10;
-        document.getElementById ("precioDescuento").value=final;
+        final=final*1.1;
+        alert ("Usted pagó 10% de ingresos brutos");
     }
-    else
-    {
-        document.getElementById ("precioDescuento").value=final;
-    }
-
-} 	
+    document.getElementById("precioDescuento").value=final;
 }
