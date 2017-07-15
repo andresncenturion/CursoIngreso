@@ -1,104 +1,73 @@
-var eleccionMaquina;
-var ContadorDeEmpates=0;
-var ContadorDeGanadas=0;
-var ContadorDePerdidas=0;
+var maquina,empate=0,gano=0,perdio=0,resultado;
 
 function comenzar()
 {
-	//Genero el número RANDOM entre 1 y 3
-	 	numeroSecreto =Math.floor( Math.random()*3)+1;
-		//alert(numeroSecreto);
-		switch(numeroSecreto)
-		{
-			case 1:
-				eleccionMaquina="piedra";
-				break;
-			case 2:
-				eleccionMaquina="papel";
-				break;
-			case 3:
-				eleccionMaquina="tijera";
-				break;
+maquina=(Math.floor(Math.random()*(4-1))+1);
+console.log(maquina);
+}
 
-		}
-		//alert(eleccionMaquina);
-
-
-
-}//FIN DE LA FUNCIÓN
 function piedra()
 {
-	alert("la maquina selecciono: "+eleccionMaquina);
-	eleccionHumano="piedra";
-	if(eleccionHumano==eleccionMaquina)
-	{
-		alert("empate.");	
-		ContadorDeEmpates++;	
-	}
-	else if(eleccionMaquina=="tijera")
-	{
-		alert("vos ganastes.");
-		ContadorDeGanadas++;
-	}
-	else
-	{
-		alert("ganó la Maquina.");
-		ContadorDePerdidas++;
-	}
+comenzar();
+switch (maquina)
+    {
+    case 1:
+        empate++;
+		break;
+	case 2:
+        perdio++;
+        break;
+    case 3:
+        gano++;
+        break;
+    }	
+	mostrarResultado();
+}
 
-mostarResultado();
-
-}//FIN DE LA FUNCIÓN
 function papel()
 {
-	alert("la maquina selecciono: "+eleccionMaquina);
-	eleccionHumano="papel";
-	if(eleccionHumano==eleccionMaquina)
-	{
-		alert("empate.");
-		ContadorDeEmpates++;		
+comenzar();
+switch (maquina)
+    {
+    case 1:
+        gano++;
+        break;
+    case 2:
+        empate++;
+        break;
+    case 3:
+        perdio++;
+        break;
+    }
+	mostrarResultado();	
+}
 
-	}
-	else if(eleccionMaquina=="piedra")
-	{
-		alert("vos ganastes.");
-		ContadorDeGanadas++;
-	}
-	else
-	{
-		alert("ganó la Maquina.");
-		ContadorDePerdidas++;
-	}
-mostarResultado();
-}//FIN DE LA FUNCIÓN
 function tijera()
 {
-	alert("la maquina selecciono: "+eleccionMaquina);
-	eleccionHumano="tijera";
-	if(eleccionHumano==eleccionMaquina)
-	{
-		alert("empate.");
-		ContadorDeEmpates++;		
-	}
-	else if(eleccionMaquina=="papel")
-	{
-		alert("vos ganastes.");
-		ContadorDeGanadas++;
-	}
-	else
-	{
-		alert("ganó la Maquina.");
-		ContadorDePerdidas++;
-	}
-mostarResultado();
-}//FIN DE LA FUNCIÓN
-
-function mostarResultado()
-{
-
-document.getElementById('empatadas').value=ContadorDeEmpates + " partidas empatadas.";
-document.getElementById('perdidas').value=ContadorDePerdidas + " partidas perdidas.";
-document.getElementById('ganadas').value=ContadorDeGanadas + " partidas ganadas.";
-
 comenzar();
+switch (maquina)
+    {
+    case 1:
+        perdio++;
+        break;
+	case 2:
+        gano++;
+        break;
+    case 3:
+        empate++;
+        break;
+    }
+	mostrarResultado();	
+
 }
+
+function mostrarResultado()
+{
+if (gano>=empate+perdio&&empate+perdio+gano==3)
+{
+	gano--;
+}
+alert ("Gano: "+gano+" partidas"+"\nEmpato: "+empate+" partidas"+"\nPerdio: "+perdio+" partidas");
+}
+
+

@@ -60,6 +60,10 @@ function CalcularPrecio ()
             final=precio-precio*0.5;
             break;
         }
+        }
+        else
+        {
+            final=precio*cantlamp;
         }    
     if (final>120)
     {

@@ -1,20 +1,29 @@
 function Mostrar()
 {
 
-	var max=0,min=0,num=0,respuesta='si';
+	var max,min,num,respuesta='si',bandera=true;
 
 	while(respuesta=='si')
 	{
-		num=parseInt(prompt ("Ingrese un numero:"));
-		if (num>max)
+	num=prompt("Ingrese un numero:");
+		if (bandera==true)
 		{
-			max=num;
+		bandera=false;
+		max=num;
+		min=num;
 		}
-		else if (num<min)
+		else
 		{
-			min=num;
+			if (num>max)
+			{
+				max=num;
+			}
+			if (num<min)
+			{
+				min=num;
+			}
 		}
-		respuesta=prompt ("Desea ingresar otro numero?");
+	respuesta=prompt("Desea ingresar otro numero?");
 	}
 	document.getElementById("maximo").value=max;
 	document.getElementById("minimo").value=min;
